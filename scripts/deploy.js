@@ -1,8 +1,10 @@
 const main = async () => {
-  const Token = await ethers.getContractFactory('WavePortal');
-  const portal = await Token.deploy();
+  const contract = await ethers.getContractFactory('WavePortal');
+  const contractDeployed = await contract.deploy({
+    value: hre.ethers.utils.parseEther('0.001'),
+  });
 
-  console.log('WavePortal address:', portal.address);
+  console.log('WavePortal address:', contractDeployed.address);
 };
 
 const runMain = async () => {
